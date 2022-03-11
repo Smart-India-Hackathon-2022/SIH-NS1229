@@ -3,7 +3,12 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:path/path.dart';
+
+import 'api.dart';
 
 class AdminPanel extends StatefulWidget {
   const AdminPanel({Key? key}) : super(key: key);
@@ -15,10 +20,14 @@ class AdminPanel extends StatefulWidget {
 class _AdminPanelState extends State<AdminPanel> {
   TextEditingController titlecontroller = TextEditingController();
   ImagePicker picker = ImagePicker();
+  UploadTask? task;
+  File? file;
+
   var _img;
   String? imageUrl;
   @override
   Widget build(BuildContext context) {
+    final fileName = file != null ? basename(file!.path) : 'No File Selected';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -75,6 +84,19 @@ class _AdminPanelState extends State<AdminPanel> {
                   SizedBox(
                     height: 20,
                   ),
+                  IconButton(
+                      onPressed: () {
+                        print("dj");
+                        selectFile();
+                      },
+                      icon: Icon(
+                        Icons.video_call,
+                        color: Colors.white,
+                      )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  task != null ? buildUploadStatus(task!) : Container(),
                   Container(
                     height: 45,
                     width: MediaQuery.of(context).size.width - 30,
@@ -255,18 +277,19 @@ class _AdminPanelState extends State<AdminPanel> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      final _firebaseStorage = FirebaseStorage.instance;
-                      // XFile image;
+                      // final _firebaseStorage = FirebaseStorage.instance;
 
-                      //Upload to Firebase
-                      var snapshot = await _firebaseStorage
-                          .ref()
-                          .child('images/imageName')
-                          .putFile(_img);
-                      var downloadUrl = await snapshot.ref.getDownloadURL();
-                      setState(() {
-                        imageUrl = downloadUrl;
-                      });
+                      // var snapshot = await _firebaseStorage
+                      //     .ref()
+                      //     .child(_img.toString())
+                      //     .putFile(_img);
+                      // var downloadUrl = await snapshot.ref.getDownloadURL();
+                      // setState(() {
+                      //   imageUrl = downloadUrl;
+                      //   print(imageUrl);
+
+                      // });
+                      uploadFile();
                     },
                     child: Container(
                       height: 40,
@@ -292,4 +315,51 @@ class _AdminPanelState extends State<AdminPanel> {
       ),
     );
   }
+
+  Future selectFile() async {
+    final result = await FilePicker.platform.pickFiles(allowMultiple: false);
+
+    if (result == null) return;
+    final path = result.files.single.path!;
+
+    setState(() => file = File(path));
+  }
+
+  Future uploadFile() async {
+    if (file == null) return;
+
+    final fileName = basename(file!.path);
+    final destination = 'files/$fileName';
+
+    task = FirebaseApi.uploadFile(destination, file!);
+    setState(() {});
+
+    if (task == null) return;
+
+    final snapshot = await task!.whenComplete(() {});
+    final urlDownload = await snapshot.ref.getDownloadURL();
+
+    print('Download-Link: $urlDownload');
+  }
+
+  Widget buildUploadStatus(UploadTask task) => StreamBuilder<TaskSnapshot>(
+        stream: task.snapshotEvents,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final snap = snapshot.data!;
+            final progress = snap.bytesTransferred / snap.totalBytes;
+            final percentage = (progress * 100).toStringAsFixed(2);
+
+            return Text(
+              '$percentage %',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            );
+          } else {
+            return Container();
+          }
+        },
+      );
 }
