@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ns1229/Admin/adminpanel.dart';
 import 'package:ns1229/Admin/loginscreen.dart';
 import 'package:ns1229/homescreen.dart';
+import 'Admin/pibprofilescreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

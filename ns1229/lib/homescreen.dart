@@ -26,8 +26,50 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.black,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text(
+                "Naveena",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Notification',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text(
+                'Themes',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+              onTap: () {},
+            ),
+            Spacer(),
+            ListTile(
+              title: Text(
+                'Logout',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
         centerTitle: true,
         actions: [
           IconButton(
