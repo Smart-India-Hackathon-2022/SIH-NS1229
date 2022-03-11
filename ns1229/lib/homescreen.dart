@@ -9,13 +9,55 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String typeselected = "News";
-
+  bool newsselected = false;
+  bool videoselected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.black,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text(
+                "Naveena",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Notification',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text(
+                'Themes',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+              onTap: () {},
+            ),
+            Spacer(),
+            ListTile(
+              title: Text(
+                'Logout',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
         centerTitle: true,
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
         backgroundColor: Colors.black,
@@ -52,57 +94,57 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 15,
-                ),
-                Container(
-                  child: Center(
-                    child: Text(
-                      'News',
-                      style: GoogleFonts.dmSans(
-                        textStyle: TextStyle(
-                            color: typeselected == "News"
-                                ? Colors.white
-                                : Colors.red[900],
-                            fontSize: 17,
-                            letterSpacing: .5),
-                      ),
-                    ),
-                  ),
-                  height: 40,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      color: typeselected == "New"
+            Row(children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      newsselected = !newsselected;
+                    });
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: newsselected == true
                           ? Colors.red[900]
-                          : Colors.white,
-                      border: Border.all(color: Colors.red.shade900),
-                      borderRadius: BorderRadius.circular(70)),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 40,
-                  width: 100,
-                  child: Center(
-                    child: Text(
-                      'Videos',
-                      style: GoogleFonts.dmSans(
-                        textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            letterSpacing: .5),
-                      ),
+                          : Colors.grey[400],
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    child: Center(
+                        child: Text(
+                      "News",
+                      style: TextStyle(
+                          color: newsselected ? Colors.white : Colors.black),
+                    )),
                   ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    videoselected = !videoselected;
+                  });
+                },
+                child: Container(
+                  height: 50,
+                  width: 90,
                   decoration: BoxDecoration(
-                      color: Colors.red[900],
-                      borderRadius: BorderRadius.circular(70)),
-                )
-              ],
-            ),
+                    color: videoselected == true
+                        ? Colors.red[900]
+                        : Colors.grey[400],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                      child: Text(
+                    "Videos",
+                    style: TextStyle(
+                        color: videoselected ? Colors.white : Colors.black),
+                  )),
+                ),
+              ),
+            ]),
             SizedBox(
               height: 20,
             ),
