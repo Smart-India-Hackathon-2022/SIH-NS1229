@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ns1229/Admin/register.dart';
 import 'package:ns1229/homescreen.dart';
 
+import '../views/forgotpassword.dart';
 import 'alertdialog.dart';
 import 'helper.dart';
 
@@ -33,112 +35,178 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-          child: Column(
-            children: [
-              Text(
-                "LOGIN",
+        body: Container(
+      height: MediaQuery.of(context).size.height,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 30.0, right: 30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20),
+            Container(
+              height: 150,
+              child: Image.network(
+                  "https://i.ibb.co/yBVKFkN/Whats-App-Image-2022-03-11-at-6-45-19-PM.jpg"),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Text(
+              "LOGIN",
+              style: GoogleFonts.dmSans(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 14,
+                    letterSpacing: 2),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              "Please Enter Your e-mail and password",
+              style: GoogleFonts.dmSans(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 14,
+                    letterSpacing: 0.5),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              height: 45,
+              width: 400,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: TextField(
+                  style: TextStyle(color: Colors.black, fontSize: 14),
+                  cursorColor: Colors.black,
+                  controller: emailcontroller,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    labelText: 'Email',
+                    labelStyle: TextStyle(
+                        fontFamily: 'lato',
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black54),
+                  ),
+                ),
+              ),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              height: 45,
+              width: 400,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: TextField(
+                  style: TextStyle(color: Colors.black, fontSize: 14),
+                  cursorColor: Colors.black,
+                  controller: passwordcontroller,
+                  obscureText: !_password,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                          _password ? Icons.visibility : Icons.visibility_off,
+                          color: Colors.black,
+                          size: 18),
+                      onPressed: () {
+                        setState(() {
+                          _password = !_password;
+                        });
+                      },
+                    ),
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                        fontFamily: 'lato',
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black54),
+                  ),
+                ),
+              ),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                Route route =
+                    MaterialPageRoute(builder: (context) => ForgetPassword());
+                Navigator.push(context, route);
+              },
+              child: Text(
+                "Forget Password ?",
                 style: GoogleFonts.dmSans(
                   textStyle: const TextStyle(
                       fontWeight: FontWeight.normal,
-                      color: Colors.black,
+                      color: Colors.black45,
                       fontSize: 14,
-                      letterSpacing: 2),
+                      letterSpacing: 0),
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                "Please Enter Your e-mail and password",
-                style: GoogleFonts.dmSans(
-                  textStyle: const TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black,
-                      fontSize: 14,
-                      letterSpacing: 0.5),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Container(
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                emailcontroller.text.isNotEmpty &&
+                        passwordcontroller.text.isNotEmpty
+                    ? _loginform()
+                    : showDialog(
+                        context: context,
+                        builder: (c) {
+                          return ErrorAlertDialog(
+                              message: "Provide Email and Password");
+                        });
+              },
+              child: Container(
                 height: 45,
                 width: 400,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: TextField(
-                    style: TextStyle(color: Colors.black, fontSize: 14),
-                    cursorColor: Colors.black,
-                    controller: emailcontroller,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      labelText: 'Email',
-                      labelStyle: TextStyle(
-                          fontFamily: 'lato',
-                          fontSize: 14,
+                child: Center(
+                  child: Text(
+                    "LOGIN",
+                    style: GoogleFonts.dmSans(
+                      textStyle: const TextStyle(
                           fontWeight: FontWeight.normal,
-                          color: Colors.black54),
+                          color: Colors.white,
+                          fontSize: 14,
+                          letterSpacing: 2),
                     ),
                   ),
                 ),
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.black)),
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(204, 191, 171, 1),
+                    border:
+                        Border.all(color: Color.fromRGBO(204, 191, 171, 1))),
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                height: 45,
-                width: 400,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: TextField(
-                    style: TextStyle(color: Colors.black, fontSize: 14),
-                    cursorColor: Colors.black,
-                    controller: passwordcontroller,
-                    obscureText: !_password,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                            _password ? Icons.visibility : Icons.visibility_off,
-                            color: Colors.black,
-                            size: 18),
-                        onPressed: () {
-                          setState(() {
-                            _password = !_password;
-                          });
-                        },
-                      ),
-                      labelText: 'Password',
-                      labelStyle: TextStyle(
-                          fontFamily: 'lato',
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black54),
-                    ),
-                  ),
-                ),
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.black)),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Route route =
-                  //     MaterialPageRoute(builder: (context) => ForgetPassword());
-                  // Navigator.push(context, route);
-                },
-                child: Text(
-                  "Forget Password ?",
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account ?",
                   style: GoogleFonts.dmSans(
                     textStyle: const TextStyle(
                         fontWeight: FontWeight.normal,
@@ -147,81 +215,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         letterSpacing: 0),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  emailcontroller.text.isNotEmpty &&
-                          passwordcontroller.text.isNotEmpty
-                      ? _loginform()
-                      : showDialog(
-                          context: context,
-                          builder: (c) {
-                            return ErrorAlertDialog(
-                                message: "Provide Email and Password");
-                          });
-                },
-                child: Container(
-                  height: 45,
-                  width: 400,
-                  child: Center(
-                    child: Text(
-                      "LOGIN",
-                      style: GoogleFonts.dmSans(
-                        textStyle: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                            fontSize: 14,
-                            letterSpacing: 2),
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(204, 191, 171, 1),
-                      border:
-                          Border.all(color: Color.fromRGBO(204, 191, 171, 1))),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account ?",
+                GestureDetector(
+                  onTap: () {
+                    Get.to(RegisterScreen());
+                  },
+                  child: Text(
+                    " Create one",
                     style: GoogleFonts.dmSans(
                       textStyle: const TextStyle(
                           fontWeight: FontWeight.normal,
-                          color: Colors.black45,
+                          color: Colors.black,
                           fontSize: 14,
                           letterSpacing: 0),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Route route = MaterialPageRoute(
-                          builder: (context) => RegisterScreen());
-                      Navigator.pushReplacement(context, route);
-                    },
-                    child: Text(
-                      " Create one",
-                      style: GoogleFonts.dmSans(
-                        textStyle: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black,
-                            fontSize: 14,
-                            letterSpacing: 0),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          color: Colors.white),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     ));
   }
 
