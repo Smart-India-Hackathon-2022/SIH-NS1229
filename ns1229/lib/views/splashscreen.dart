@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     Timer(const Duration(seconds: 3), () {
-      Get.to(const HomeScreen());
+      Get.to(const LoginScreen());
     });
     super.initState();
   }
@@ -30,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Image.network("https://i.ibb.co/4RcfSPq/344.png"),
       ),

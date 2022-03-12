@@ -35,15 +35,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Padding(
               padding: const EdgeInsets.only(left: 15.0, right: 15),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: 40,
                   ),
                   SizedBox(height: 20),
-                  Container(
-                    height: 150,
-                    child: Image.network(
-                        "https://i.ibb.co/yBVKFkN/Whats-App-Image-2022-03-11-at-6-45-19-PM.jpg"),
+                  Center(
+                    child: SizedBox(
+                      height: 150,
+                      child: Image.network("https://i.ibb.co/4RcfSPq/344.png"),
+                    ),
                   ),
                   Text(
                     "REGISTER",
@@ -184,23 +186,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     child: Container(
                       height: 45,
-                      width: 400,
+                      width: 200,
                       child: Center(
                         child: Text(
                           "CREATE ACCOUNT",
                           style: GoogleFonts.dmSans(
                             textStyle: const TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white,
-                                fontSize: 14,
-                                letterSpacing: 2),
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
-                          color: Color.fromRGBO(204, 191, 171, 1),
-                          border: Border.all(
-                              color: Color.fromRGBO(204, 191, 171, 1))),
+                        color: Colors.red[900],
+                      ),
                     ),
                   ),
                   SizedBox(

@@ -44,10 +44,11 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
-            Container(
-              height: 150,
-              child: Image.network(
-                  "https://i.ibb.co/yBVKFkN/Whats-App-Image-2022-03-11-at-6-45-19-PM.jpg"),
+            Center(
+              child: Container(
+                height: 150,
+                child: Image.network("https://i.ibb.co/4RcfSPq/344.png"),
+              ),
             ),
             SizedBox(
               height: 40,
@@ -180,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               child: Container(
                 height: 45,
-                width: 400,
+                width: 100,
                 child: Center(
                   child: Text(
                     "LOGIN",
@@ -194,9 +195,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(204, 191, 171, 1),
-                    border:
-                        Border.all(color: Color.fromRGBO(204, 191, 171, 1))),
+                  color: Colors.red[900],
+                ),
               ),
             ),
             SizedBox(
