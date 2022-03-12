@@ -277,18 +277,7 @@ class _AdminPanelState extends State<AdminPanel> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      // final _firebaseStorage = FirebaseStorage.instance;
-
-                      // var snapshot = await _firebaseStorage
-                      //     .ref()
-                      //     .child(_img.toString())
-                      //     .putFile(_img);
-                      // var downloadUrl = await snapshot.ref.getDownloadURL();
-                      // setState(() {
-                      //   imageUrl = downloadUrl;
-                      //   print(imageUrl);
-
-                      // });
+                      
                       uploadFile();
                     },
                     child: Container(
