@@ -46,114 +46,114 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white, fontSize: 18, letterSpacing: .5),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
-              child: Container(
-                height: 1,
-                width: MediaQuery.of(context).size.width - 100,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  '   Home',
-                  style: GoogleFonts.dmSans(
-                    textStyle: TextStyle(
-                        color: Colors.white, fontSize: 18, letterSpacing: .5),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
-              child: Container(
-                height: 0.5,
-                width: MediaQuery.of(context).size.width - 100,
-                color: Colors.grey[200],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  '   Gallery',
-                  style: GoogleFonts.dmSans(
-                    textStyle: TextStyle(
-                        color: Colors.white, fontSize: 18, letterSpacing: .5),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
-              child: Container(
-                height: 0.5,
-                width: MediaQuery.of(context).size.width - 100,
-                color: Colors.grey[200],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  '   Events',
-                  style: GoogleFonts.dmSans(
-                    textStyle: TextStyle(
-                        color: Colors.white, fontSize: 18, letterSpacing: .5),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
-              child: Container(
-                height: 0.5,
-                width: MediaQuery.of(context).size.width - 100,
-                color: Colors.grey[200],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  '   Videos',
-                  style: GoogleFonts.dmSans(
-                    textStyle: TextStyle(
-                        color: Colors.white, fontSize: 18, letterSpacing: .5),
-                  ),
-                ),
-              ],
-            ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
+            //   child: Container(
+            //     height: 1,
+            //     width: MediaQuery.of(context).size.width - 100,
+            //     color: Colors.white,
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     Text(
+            //       '   Home',
+            //       style: GoogleFonts.dmSans(
+            //         textStyle: TextStyle(
+            //             color: Colors.white, fontSize: 18, letterSpacing: .5),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
+            //   child: Container(
+            //     height: 0.5,
+            //     width: MediaQuery.of(context).size.width - 100,
+            //     color: Colors.grey[200],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     Text(
+            //       '   Gallery',
+            //       style: GoogleFonts.dmSans(
+            //         textStyle: TextStyle(
+            //             color: Colors.white, fontSize: 18, letterSpacing: .5),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
+            //   child: Container(
+            //     height: 0.5,
+            //     width: MediaQuery.of(context).size.width - 100,
+            //     color: Colors.grey[200],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     Text(
+            //       '   Events',
+            //       style: GoogleFonts.dmSans(
+            //         textStyle: TextStyle(
+            //             color: Colors.white, fontSize: 18, letterSpacing: .5),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 10.0, top: 10, right: 10),
+            //   child: Container(
+            //     height: 0.5,
+            //     width: MediaQuery.of(context).size.width - 100,
+            //     color: Colors.grey[200],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     Text(
+            //       '   Videos',
+            //       style: GoogleFonts.dmSans(
+            //         textStyle: TextStyle(
+            //             color: Colors.white, fontSize: 18, letterSpacing: .5),
+            //       ),
+            //     ),
+            //   ],
+            // ),
             Spacer(),
             ListTile(
               title: Text(
-                'PIB India',
+                'Logout',
                 style: TextStyle(color: Colors.white, fontSize: 15),
               ),
               onTap: () {},
@@ -163,6 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       appBar: AppBar(
         centerTitle: true,
+        elevation: 0,
         // actions: [
         //   IconButton(
         //       onPressed: () {},
