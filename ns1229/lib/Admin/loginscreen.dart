@@ -44,10 +44,11 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
-            Container(
-              height: 150,
-              child: Image.network(
-                  "https://i.ibb.co/yBVKFkN/Whats-App-Image-2022-03-11-at-6-45-19-PM.jpg"),
+            Center(
+              child: Container(
+                height: 150,
+                child: Image.network("https://i.ibb.co/4RcfSPq/344.png"),
+              ),
             ),
             SizedBox(
               height: 40,

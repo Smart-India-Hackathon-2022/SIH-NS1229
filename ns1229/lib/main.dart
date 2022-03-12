@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:ns1229/Admin/adminpanel.dart';
+import 'package:ns1229/Admin/login.dart';
 import 'package:ns1229/Admin/loginscreen.dart';
 import 'package:ns1229/homescreen.dart';
 import 'package:ns1229/views/splashscreen.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const PIBLogin(),
     );
   }
 }
