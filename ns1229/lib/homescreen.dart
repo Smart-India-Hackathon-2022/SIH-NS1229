@@ -163,16 +163,11 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       appBar: AppBar(
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => AdminPanel()));
-                  },
-                  child: Icon(Icons.search)))
-        ],
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {},
+        //       icon: GestureDetector(onTap: () {}, child: Icon(Icons.search)))
+        // ],
         backgroundColor: Colors.blueGrey[900],
         title: Text(
           'Press Information Bureau',
@@ -582,7 +577,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   right: 8,
                                                   bottom: 2),
                                               child: Container(
-                                                height: 100,
+                                                height: 95,
                                                 width: 190,
                                                 child: Image.network(
                                                   snapshot.data!.docs[index]

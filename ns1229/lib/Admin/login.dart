@@ -62,7 +62,7 @@ class _PIBLoginState extends State<PIBLogin> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Text(
               "Please Enter Your e-mail and password",

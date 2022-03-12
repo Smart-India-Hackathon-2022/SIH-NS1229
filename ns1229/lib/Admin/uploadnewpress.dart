@@ -112,7 +112,7 @@ class _UploadNewPressState extends State<UploadNewPress> {
                 ),
                 child: Center(
                     child: Text(
-                  "Upload Activity",
+                  "Upload",
                   style: TextStyle(color: Colors.white),
                 )),
               ),

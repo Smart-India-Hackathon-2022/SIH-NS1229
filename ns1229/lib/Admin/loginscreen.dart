@@ -46,12 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 20),
             Center(
               child: Container(
-                height: 150,
+                height: 130,
                 child: Image.network("https://i.ibb.co/4RcfSPq/344.png"),
               ),
-            ),
-            SizedBox(
-              height: 40,
             ),
             Text(
               "LOGIN",
@@ -64,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Text(
               "Please Enter Your e-mail and password",
@@ -77,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             Container(
               height: 45,

@@ -26,7 +26,7 @@ class _UploadVideoState extends State<UploadVideo> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: Text(
-            'Upload Videos',
+            'Upload Video',
             style: GoogleFonts.dmSans(
               textStyle: TextStyle(
                   color: Colors.white, fontSize: 17, letterSpacing: .5),
@@ -119,7 +119,7 @@ class _UploadVideoState extends State<UploadVideo> {
                   ),
                   child: Center(
                       child: Text(
-                    "Upload Activity",
+                    "Upload",
                     style: TextStyle(color: Colors.white),
                   )),
                 ),
