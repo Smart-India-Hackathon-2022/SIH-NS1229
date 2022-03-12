@@ -1,4 +1,4 @@
-//Edit News 
+// Edit News 
 // Custom Video Player
 // notification
 // launguage
